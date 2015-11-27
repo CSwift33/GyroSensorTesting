@@ -13,15 +13,18 @@ class Robot: public SampleRobot
     const static int rearRightChannel	= 0;
 
     const static int joystickChannel	= 0;
+    const static int gyroChannel = 0;
 
 	RobotDrive robotDrive;	// robot drive system
 	Joystick stick;			// only joystick
+	Gyro *gyroScope;
 
 public:
 	Robot() :
 			robotDrive(frontLeftChannel, rearLeftChannel,
 					   frontRightChannel, rearRightChannel),	// these must be initialized in the same order
-			stick(joystickChannel)								// as they are declared above.
+			stick(joystickChannel),								// as they are declared above.
+			gyroScope(gyroChannel)
 	{
 		robotDrive.SetExpiration(0.1);
 		robotDrive.SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);	// invert the left side motors
